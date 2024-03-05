@@ -1,0 +1,282 @@
+{
+  "documents": [
+    {
+      "location_id": NumberLong(1),
+      "type": "place",
+      "name": "TU Wien",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.3699,
+          48.199
+        ]
+      },
+      "category": "University",
+      "openHour": 12,
+      "closingHour": 20
+    },
+    {
+      "location_id": NumberLong(2),
+      "type": "place",
+      "name": "McDonald's",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.368528,
+          48.200939
+        ]
+      },
+      "category": "Restaurant",
+      "openHour": 6,
+      "closingHour": 20
+    },
+    {
+      "location_id": NumberLong(3),
+      "type": "place",
+      "name": "McDonald's",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.374138,
+          48.201085
+        ]
+      },
+      "category": "Restaurant",
+      "openHour": 0,
+      "closingHour": 24
+    },
+    {
+      "location_id": NumberLong(4),
+      "type": "place",
+      "name": "McDonald's",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.371674,
+          48.205241
+        ]
+      },
+      "category": "Restaurant",
+      "openHour": 10,
+      "closingHour": 20
+    },
+    {
+      "location_id": NumberLong(5),
+      "type": "place",
+      "name": "McDonald's",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.380754,
+          70.219325
+        ]
+      },
+      "category": "Restaurant",
+      "openHour": 8,
+      "closingHour": 22
+    },
+    {
+      "location_id": NumberLong(6),
+      "type": "address",
+      "name": "Zirkusgasse 1",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.384230,
+          48.216310
+        ]
+      },
+      "openHour": 10,
+      "closingHour": 19
+    },
+    {
+      "location_id": NumberLong(7),
+      "type": "address",
+      "name": "Handelskai 9",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.406082,
+          60.225571
+        ]
+      },
+      "openHour": 20,
+      "closingHour": 22
+    },
+    {
+      "location_id": NumberLong(8),
+      "type": "place",
+      "name": "Cairngorms National Park",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          -3.562790,
+          57.046944
+        ]
+      },
+      "category": "Park",
+      "openHour": 10,
+      "closingHour": 20
+    },
+    {
+      "location_id": NumberLong(9),
+      "type": "place",
+      "name": "Distributed Systems Group",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.371425,
+          48.197742
+        ]
+      },
+      "category": "University",
+      "openHour": 11,
+      "closingHour": 12
+    },
+    {
+      "location_id": NumberLong(10),
+      "type": "place",
+      "name": "Computer Vision Lab",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.369572,
+          48.195244
+        ]
+      },
+      "category": "University",
+      "openHour": 9,
+      "closingHour": 14
+    },
+    {
+      "location_id": NumberLong(11),
+      "type": "place",
+      "name": "Uni Wien",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.360372,
+          48.213069
+        ]
+      },
+      "category": "University",
+      "openHour": 11,
+      "closingHour": 23
+    },
+    {
+      "location_id": NumberLong(12),
+      "type": "place",
+      "name": "BOKU Wien",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.337443,
+          48.236530
+        ]
+      },
+      "category": "University",
+      "openHour": 8,
+      "closingHour": 20
+    },
+    {
+      "location_id": NumberLong(13),
+      "type": "place",
+      "name": "WU Wien",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.408456,
+          48.213561
+        ]
+      },
+      "category": "University",
+      "openHour": 10,
+      "closingHour": 20
+    },
+    {
+      "location_id": NumberLong(14),
+      "type": "place",
+      "name": "Audimax TU Wien",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.363949,
+          48.200822
+        ]
+      },
+      "category": "University",
+      "openHour": 10,
+      "closingHour": 18
+    },
+    {
+      "location_id": NumberLong(15),
+      "type": "place",
+      "name": "Burger King",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          18.374138,
+          20.201085
+        ]
+      },
+      "category": "Restaurant",
+      "openHour": 10,
+      "closingHour": 24
+    },
+    {
+      "location_id": NumberLong(16),
+      "type": "food",
+      "name": "Pommes",
+      "ingredients": [
+        "potato",
+        "salt",
+        "oil"
+      ]
+    },
+    {
+      "location_id": NumberLong(17),
+      "type": "place",
+      "name": "Kunsthistorisches Museum",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.361516,
+          48.203576
+        ]
+      },
+      "category": "Museum",
+      "openHour": 10,
+      "closingHour": 18
+    },
+    {
+      "location_id": NumberLong(18),
+      "type": "place",
+      "name": "Belvedere Museum",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.380056,
+          48.191797
+        ]
+      },
+      "category": "Museum",
+      "openHour": 10,
+      "closingHour": 18
+    },
+    {
+      "location_id": NumberLong(19),
+      "type": "place",
+      "name": "Technisches Museum Wien",
+      "geo": {
+        "type": "Point",
+        "coordinates": [
+          16.19052,
+          48.11256
+        ]
+      },
+      "category": "Museum",
+      "openHour": 9,
+      "closingHour": 18
+    }
+  ]
+}

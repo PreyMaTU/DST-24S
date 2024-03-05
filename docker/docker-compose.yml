@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  rabbitmq:
+    image: "rabbitmq:3.9.13-management-alpine"
+    hostname: "rabbit"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - "RABBITMQ_DEFAULT_USER=dst"
+      - "RABBITMQ_DEFAULT_PASS=dst"
+  redis:
+    image: "redis:6.2.6-alpine"
+    hostname: "redis"
+    ports:
+      - "6379:6379"
+networks:
+  default:
+    name: "dst"
