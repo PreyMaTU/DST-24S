@@ -9,7 +9,7 @@
         <mapping-file>META-INF/orm.xml</mapping-file>
         <properties>
             <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:h2:/tmp/database/dst;AUTO_SERVER=TRUE;"/>
+            <property name="hibernate.connection.url" value="jdbc:h2:./tmp/database/dst;AUTO_SERVER=TRUE;"/>
             <!--<property name="hibernate.connection.username" value=""/>-->
             <!--<property name="hibernate.connection.password" value=""/>-->
             <property name="hibernate.dialect" value="dst.ass1.jpa.util.H2DialectExtended"/>
