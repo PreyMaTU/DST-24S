@@ -20,7 +20,7 @@ public class PaymentInfo implements IPaymentInfo {
     private Long id;
 
     private String name;
-    private PaymentMethod paymentMethod;
+    private PaymentMethod method;
     private Boolean preferred;
 
 
@@ -46,12 +46,12 @@ public class PaymentInfo implements IPaymentInfo {
 
     @Override
     public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
+        return method;
     }
 
     @Override
     public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod= paymentMethod;
+        this.method = paymentMethod;
     }
 
     @Override
