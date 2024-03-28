@@ -19,3 +19,10 @@ bin/
 
 # backup-files
 *~
+
+# Error logs
+*.log
+
+# The database file
+*.db
+
