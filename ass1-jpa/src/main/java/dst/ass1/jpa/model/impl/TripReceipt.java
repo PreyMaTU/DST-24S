@@ -18,7 +18,7 @@ public class TripReceipt implements ITripReceipt {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne(optional = false)
+    @OneToOne( optional = true )
     @JoinColumn
     private TripInfo tripInfo;
 
