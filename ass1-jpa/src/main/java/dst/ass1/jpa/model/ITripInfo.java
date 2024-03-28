@@ -28,8 +28,8 @@ public interface ITripInfo {
 
     void setTrip(ITrip trip);
 
-    ITripReceipt getReceipt();
+    ITripReceipt getTripReceipt();
 
-    void setReceipt(ITripReceipt receipt);
+    void setTripReceipt(ITripReceipt tripReceipt);
 
 }

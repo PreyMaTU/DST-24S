@@ -1015,12 +1015,12 @@ public class TestData implements ITestData {
         tripInfo5.setTrip(trip5);
         tripInfo17.setTrip(trip17);
 
-        tripInfo1.setReceipt(tripReceipt1);
-        tripInfo2.setReceipt(tripReceipt2);
-        tripInfo3.setReceipt(tripReceipt3);
-        tripInfo4.setReceipt(tripReceipt4);
-        tripInfo5.setReceipt(tripReceipt5);
-        tripInfo17.setReceipt(tripReceipt17);
+        tripInfo1.setTripReceipt(tripReceipt1);
+        tripInfo2.setTripReceipt(tripReceipt2);
+        tripInfo3.setTripReceipt(tripReceipt3);
+        tripInfo4.setTripReceipt(tripReceipt4);
+        tripInfo5.setTripReceipt(tripReceipt5);
+        tripInfo17.setTripReceipt(tripReceipt17);
 
         trip1.setTripInfo(tripInfo1);
         trip2.setTripInfo(tripInfo2);
