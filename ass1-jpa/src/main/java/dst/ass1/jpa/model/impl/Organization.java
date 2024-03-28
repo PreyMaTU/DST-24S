@@ -25,10 +25,10 @@ public class Organization implements IOrganization {
             joinColumns = { @JoinColumn(name= Constants.I_ORGANIZATION_PARTS) },
             inverseJoinColumns = { @JoinColumn(name = Constants.I_ORGANIZATION_PART_OF) }
     )
-    Collection<Organization> parts;
+    Collection<Organization> parts= new ArrayList<>();
 
     @ManyToMany( mappedBy = "parts" )
-    Collection<Organization> partOf;
+    Collection<Organization> partOf= new ArrayList<>();
 
     @ManyToMany
     Collection<Vehicle> vehicles= new ArrayList<>();
