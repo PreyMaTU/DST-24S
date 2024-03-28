@@ -5,12 +5,12 @@ import dst.ass1.jpa.model.IEmployment;
 import dst.ass1.jpa.model.IVehicle;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-public class Driver implements IDriver {
+//@DiscriminatorValue("2")
+public class Driver extends PlatformUser implements IDriver {
     static Driver fromIDriver(IDriver driver) {
         return (Driver) driver;
     }
@@ -24,14 +24,6 @@ public class Driver implements IDriver {
 
     @ManyToOne(optional = false)
     private Vehicle vehicle;
-
-    @NotNull
-    @Column(nullable = false)
-    private String name;
-    @NotNull
-    @Column(nullable = false)
-    private String tel;
-    private Double avgRating;
 
 
     @Override
@@ -72,35 +64,5 @@ public class Driver implements IDriver {
     @Override
     public void setId(Long id) {
         this.id= id;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name= name;
-    }
-
-    @Override
-    public String getTel() {
-        return tel;
-    }
-
-    @Override
-    public void setTel(String tel) {
-        this.tel= tel;
-    }
-
-    @Override
-    public Double getAvgRating() {
-        return avgRating;
-    }
-
-    @Override
-    public void setAvgRating(Double avgRating) {
-        this.avgRating= avgRating;
     }
 }

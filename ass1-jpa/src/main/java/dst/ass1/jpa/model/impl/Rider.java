@@ -10,22 +10,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-public class Rider implements IRider {
+//@DiscriminatorValue("1")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "email"}))
+public class Rider extends PlatformUser implements IRider {
     static Rider fromIRider(IRider rider) {
         return (Rider) rider;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @NotNull
-    @Column(nullable = false)
-    private String name;
-    @NotNull
-    @Column(nullable = false)
-    private String tel;
-    private Double avgRating;
     @NotNull
     @Column(unique= true, nullable = false)
     private String email;
@@ -37,46 +28,6 @@ public class Rider implements IRider {
 
     @OneToMany
     Collection<PaymentInfo> paymentInfos= new ArrayList<>();
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id= id;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name= name;
-    }
-
-    @Override
-    public String getTel() {
-        return tel;
-    }
-
-    @Override
-    public void setTel(String tel) {
-        this.tel= tel;
-    }
-
-    @Override
-    public Double getAvgRating() {
-        return avgRating;
-    }
-
-    @Override
-    public void setAvgRating(Double avgRating) {
-        this.avgRating= avgRating;
-    }
 
     @Override
     public String getEmail() {
