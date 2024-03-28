@@ -1,11 +1,17 @@
 package dst.ass1.jpa.model.impl;
 
 import dst.ass1.jpa.model.*;
+import dst.ass1.jpa.util.Constants;
 
+import javax.persistence.NamedQuery;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+@NamedQuery(
+        name = Constants.Q_TRIP_BY_STATE,
+        query = "SELECT t FROM Trip t WHERE t.state = :state"
+)
 public class Trip implements ITrip {
     static Trip fromITrip( ITrip trip ) {
         return (Trip) trip;

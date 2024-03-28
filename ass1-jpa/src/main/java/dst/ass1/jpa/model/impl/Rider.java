@@ -3,6 +3,7 @@ package dst.ass1.jpa.model.impl;
 import dst.ass1.jpa.model.IPaymentInfo;
 import dst.ass1.jpa.model.IRider;
 import dst.ass1.jpa.model.ITrip;
+import dst.ass1.jpa.util.Constants;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,6 +13,17 @@ import java.util.Collection;
 @Entity
 //@DiscriminatorValue("1")
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "email"}))
+@NamedQuery(
+        name = Constants.Q_RIDER_BY_EMAIL,
+        query = "SELECT r FROM Rider r WHERE r.email = :email"
+)
+@NamedQuery(
+        name= Constants.Q_INACTIVE_RIDER,
+        query = "SELECT r FROM Rider r WHERE r.id NOT IN (" +
+                    "SELECT r2.id FROM Rider r2 JOIN r2.trips t JOIN t.tripInfo i " +
+                    " WHERE :start < i.completed AND i.completed < :end" +
+                ")"
+)
 public class Rider extends PlatformUser implements IRider {
     static Rider fromIRider(IRider rider) {
         return (Rider) rider;

@@ -1,13 +1,18 @@
 package dst.ass1.jpa.model.impl;
 
 import dst.ass1.jpa.model.ITrip;
-import dst.ass1.jpa.model.ITripReceipt;
 import dst.ass1.jpa.model.ITripInfo;
+import dst.ass1.jpa.model.ITripReceipt;
+import dst.ass1.jpa.util.Constants;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@NamedQuery(
+        name= Constants.Q_AVERAGE_RATING_RIDER,
+        query = "SELECT r.id, AVG(t.riderRating) AS rider_average FROM TripInfo t JOIN t.trip.rider r GROUP BY r.id ORDER BY rider_average DESC"
+)
 public class TripInfo implements ITripInfo {
     static TripInfo fromITripInfo(ITripInfo tripInfo) {
         return (TripInfo) tripInfo;
