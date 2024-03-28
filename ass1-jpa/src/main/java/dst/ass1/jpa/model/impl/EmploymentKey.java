@@ -8,6 +8,7 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class EmploymentKey implements IEmploymentKey, Serializable {
@@ -41,5 +42,18 @@ public class EmploymentKey implements IEmploymentKey, Serializable {
     @Override
     public void setOrganization(IOrganization organization) {
         this.organization= Organization.fromIOrganization( organization );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EmploymentKey)) return false;
+        EmploymentKey that = (EmploymentKey) o;
+        return Objects.equals(driver, that.driver) && Objects.equals(organization, that.organization);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(driver, organization);
     }
 }
