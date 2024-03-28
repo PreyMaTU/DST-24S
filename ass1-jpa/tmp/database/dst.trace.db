@@ -1,0 +1,8 @@
+2024-03-28 11:02:59 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLTimeoutException: Zeitüberschreitung beim Versuch die Tabelle "RIDER" zu sperren
+Timeout trying to lock table "RIDER"; SQL statement:
+drop table if exists Rider CASCADE [50200-214]
+2024-03-28 11:03:35 jdbc[12]: exception
+org.h2.jdbc.JdbcSQLTimeoutException: Zeitüberschreitung beim Versuch die Tabelle "RIDER" zu sperren
+Timeout trying to lock table "RIDER"; SQL statement:
+drop table if exists Rider CASCADE [50200-214]

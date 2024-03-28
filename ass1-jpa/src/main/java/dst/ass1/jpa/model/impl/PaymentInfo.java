@@ -11,15 +11,56 @@ import javax.persistence.Id;
 @Entity
 public class PaymentInfo implements IPaymentInfo {
 
-    static PaymentInfo fromIPaymentInfo( IPaymentInfo info ) {
-        if( info == null ) {
-            return null;
-        }
-        final var paymentInfo= new PaymentInfo();
-        paymentInfo.setId(info.getId());
-        paymentInfo.setPaymentMethod(info.getPaymentMethod());
-        paymentInfo.setName(info.getName());
-        paymentInfo.setPreferred(info.isPreferred());
-        return paymentInfo;
+    static PaymentInfo fromIPaymentInfo( IPaymentInfo paymentInfo ) {
+        return (PaymentInfo) paymentInfo;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+    private PaymentMethod paymentMethod;
+    private Boolean preferred;
+
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+        this.id= id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name= name;
+    }
+
+    @Override
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    @Override
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod= paymentMethod;
+    }
+
+    @Override
+    public Boolean isPreferred() {
+        return preferred;
+    }
+
+    @Override
+    public void setPreferred(Boolean preferred) {
+        this.preferred= preferred;
     }
 }
