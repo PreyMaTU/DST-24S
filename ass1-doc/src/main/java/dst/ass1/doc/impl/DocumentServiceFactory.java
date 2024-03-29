@@ -9,13 +9,11 @@ public class DocumentServiceFactory implements IDocumentServiceFactory {
 
     @Override
     public IDocumentQuery createDocumentQuery(MongoDatabase db) {
-        // TODO
-        return null;
+        return new DocumentQuery( db );
     }
 
     @Override
     public IDocumentRepository createDocumentRepository() {
-        // TODO
-        return null;
+        return new DocumentRepository();
     }
 }
