@@ -7,6 +7,6 @@ public class ModelFactory implements IModelFactory {
 
     @Override
     public IRiderPreference createRiderPreference() {
-        return null;
+        return new RiderPreference();
     }
 }

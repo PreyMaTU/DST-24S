@@ -16,7 +16,7 @@ CREATE TABLE rider_preference (
 );
 
 CREATE TABLE preference (
-    id BIGINT PRIMARY KEY NOT NULL,
+    id BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     rider_id BIGINT,
     pref_key TEXT,
     pref_value TEXT,

@@ -11,6 +11,6 @@ public class DAOFactory implements IDAOFactory {
 
     @Override
     public IRiderPreferenceDAO createRiderPreferenceDao() {
-        return null;
+        return new RiderPreferenceDAO();
     }
 }
