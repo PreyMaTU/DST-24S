@@ -26,8 +26,7 @@ public class TripInfo implements ITripInfo {
     @JoinColumn
     private Trip trip;
 
-    @OneToOne(optional = false)
-    @JoinColumn
+    @OneToOne(optional = false, cascade= CascadeType.ALL)
     private TripReceipt tripReceipt;
 
     private Date completed;

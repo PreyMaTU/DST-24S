@@ -18,9 +18,12 @@ public class TripReceipt implements ITripReceipt {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne( optional = true )
-    @JoinColumn
+    @OneToOne(mappedBy= "tripReceipt", cascade= CascadeType.ALL, optional = false)
+    @JoinColumn(name= Constants.I_TRIP_INFO)
     private TripInfo tripInfo;
+
+    @Column(name= Constants.I_TRIP_INFO, insertable= false, updatable= false)
+    private Long tirpInfoId;
 
     @ManyToOne(optional = false)
     @JoinColumn
