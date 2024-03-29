@@ -9,9 +9,6 @@ public class SessionManagerFactory implements ISessionManagerFactory {
 
     @Override
     public ISessionManager createSessionManager(Properties properties) {
-        // TODO
-        // read "redis.host" and "redis.port" from the properties
-
-        return null;
+        return new SessionManager( properties );
     }
 }
