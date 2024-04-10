@@ -272,6 +272,136 @@
         <artifactId>jooq</artifactId>
         <version>${jooq.version}</version>
       </dependency>
+      <!-- assignment 2+ -->
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjrt</artifactId>
+        <version>${aspectj.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>${aspectj.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-aop</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-all</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-netty</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-protobuf</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-stub</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-testing</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>${protobuf.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-orm</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-jersey</artifactId>
+        <version>${spring-boot.version}</version>
+        <exclusions>
+          <exclusion>
+            <!-- a transitive dependency org.glassfish.hk2:spring-bridge imports spring-context 4.3.16 -->
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jersey.core</groupId>
+        <artifactId>jersey-client</artifactId>
+        <version>${jersey.version}</version>
+      </dependency>
+      <dependency>
+        <!-- explicated for consistency with other jersey dependencies -->
+        <groupId>org.glassfish.jersey.core</groupId>
+        <artifactId>jersey-server</artifactId>
+        <version>${jersey.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.glassfish.jersey.ext</groupId>
+        <artifactId>jersey-proxy-client</artifactId>
+        <version>${jersey.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>${httpclient.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -284,6 +414,13 @@
         <module>ass1-doc</module>
         <module>ass1-kv</module>
         <module>ass1-jooq</module>
+        <module>ass2-service/api</module>
+        <module>ass2-service/auth-client</module>
+        <module>ass2-service/auth</module>
+        <module>ass2-service/trip</module>
+        <module>ass2-service/facade</module>
+        <module>ass2-aop</module>
+        <module>ass2-ioc</module>
       </modules>
     </profile>
 
@@ -312,6 +449,65 @@
       <id>ass1-jooq</id>
       <modules>
         <module>ass1-jooq</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>ass2-service</id>
+      <modules>
+        <module>ass1-jpa</module>
+        <module>ass2-service/api</module>
+        <module>ass2-service/auth-client</module>
+        <module>ass2-service/auth</module>
+        <module>ass2-service/trip</module>
+        <module>ass2-service/facade</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>ass2-aop</id>
+      <modules>
+        <module>ass2-aop</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>ass2-ioc</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+              <archive>
+                <manifestEntries>
+                  <Premain-Class>dst.ass2.ioc.lock.LockingInjectorAgent</Premain-Class>
+                </manifestEntries>
+              </archive>
+              <finalName>dst-ioc-agent</finalName>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <phase>test-compile</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+              <argLine>-javaagent:"${project.build.directory}/dst-ioc-agent.jar"</argLine>
+              <includes>
+                <include>dst/ass2/ioc/**/*.java</include>
+              </includes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+      <modules>
+        <module>ass2-ioc</module>
       </modules>
     </profile>
 
@@ -347,6 +543,17 @@
     <mongodb.version>3.12.12</mongodb.version>
     <flapdoodle.version>3.5.4</flapdoodle.version>
     <jooq.version>3.16.14</jooq.version>
+    <!-- assignment 2 -->
+    <aspectj.version>1.9.19</aspectj.version>
+    <spring.version>5.3.18</spring.version>
+    <spring-boot.version>2.5.11</spring-boot.version>
+    <jersey.version>2.32</jersey.version>
+    <commons-io.version>2.11.0</commons-io.version>
+    <grpc.version>1.53.0</grpc.version>
+    <protobuf.version>3.22.0</protobuf.version>
+    <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+    <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
+    <httpclient.version>4.5.14</httpclient.version>
   </properties>
 
 
