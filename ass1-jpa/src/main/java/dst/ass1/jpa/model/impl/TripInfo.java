@@ -95,12 +95,12 @@ public class TripInfo implements ITripInfo {
     }
 
     @Override
-    public ITripReceipt getTripReceipt() {
+    public ITripReceipt getReceipt() {
         return tripReceipt;
     }
 
     @Override
-    public void setTripReceipt(ITripReceipt tripReceipt) {
+    public void setReceipt(ITripReceipt tripReceipt) {
         this.tripReceipt = TripReceipt.fromITripReceipt(tripReceipt);
     }
 }
