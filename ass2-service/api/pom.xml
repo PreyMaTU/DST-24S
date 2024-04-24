@@ -26,6 +26,12 @@
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
         </dependency>
+        <dependency>
+            <groupId>at.ac.tuwien.infosys.dst</groupId>
+            <artifactId>ass1-jpa</artifactId>
+            <version>2024.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>

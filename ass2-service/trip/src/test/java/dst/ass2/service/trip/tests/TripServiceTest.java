@@ -21,6 +21,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.LinkedList;

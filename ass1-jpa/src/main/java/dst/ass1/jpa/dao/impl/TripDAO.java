@@ -40,4 +40,16 @@ public class TripDAO implements ITripDAO {
                 .setParameter("state", state)
                 .getResultList();
     }
+
+    @Override
+    public List<ITrip> findInProgressTripsByDriver(Long driverId) {
+        return entityManager
+                .createQuery(
+                        "SELECT t FROM Trip t WHERE " +
+                                "NOT t.state IN (dst.ass1.jpa.model.TripState.COMPLETED, dst.ass1.jpa.model.TripState.CANCELLED) " +
+                                "AND t.match.driver.id = :driverId",
+                        ITrip.class )
+                .setParameter("driverId", driverId)
+                .getResultList();
+    }
 }

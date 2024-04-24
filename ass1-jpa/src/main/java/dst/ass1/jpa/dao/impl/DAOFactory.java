@@ -64,6 +64,6 @@ public class DAOFactory implements IDAOFactory {
 
     @Override
     public IPaymentInfoDAO createPaymentInfoDAO() {
-        return new PaymentInfoDAO();
+        return new PaymentInfoDAO( this.em );
     }
 }

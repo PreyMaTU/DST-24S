@@ -1,8 +1,12 @@
 package dst.ass2.service.api.trip;
 
+import dst.ass1.jpa.model.ITrip;
+import dst.ass1.jpa.model.ILocation;
+
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TripDTO implements Serializable {
 
@@ -14,6 +18,24 @@ public class TripDTO implements Serializable {
     private Long destinationId;
     private List<Long> stops;
     private MoneyDTO fare;
+
+    public static TripDTO fromTrip(ITrip trip) {
+        if( trip == null ) {
+            return null;
+        }
+
+        final var dto = new TripDTO();
+        dto.setId( trip.getId() );
+        dto.setRiderId( trip.getRider().getId() );
+        dto.setPickupId( trip.getPickup().getId() );
+        dto.setDestinationId( trip.getDestination().getId() );
+        dto.setStops(
+                trip.getStops().stream().map( ILocation::getId ).collect( Collectors.toList() )
+        );
+        dto.setFare( null );
+
+        return dto;
+    }
 
     public Long getId() {
         return id;

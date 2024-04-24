@@ -16,4 +16,13 @@ public interface ITripDAO extends GenericDAO<ITrip> {
      * @throws IllegalArgumentException if state is null
      */
     List<ITrip> findByStatus(TripState state);
+
+    /**
+     * Finds a list of trips that are still in progress (not cancelled or completed)
+     * for a specific driver.
+     *
+     * @param driverId The id of the driver to look for trips
+     * @return A list of ITrip objects of a driver that are in progress
+     */
+    List<ITrip> findInProgressTripsByDriver(Long driverId);
 }
