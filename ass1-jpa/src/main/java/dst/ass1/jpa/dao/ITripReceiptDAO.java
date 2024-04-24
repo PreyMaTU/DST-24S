@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface ITripReceiptDAO {
+    default String getEntityName() { return "TripReceipt"; }
 
     /**
      * Calculates the average tip per payment method within a given time range.

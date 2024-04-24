@@ -6,6 +6,7 @@ import dst.ass1.jpa.model.TripState;
 import java.util.List;
 
 public interface ITripDAO extends GenericDAO<ITrip> {
+    default String getEntityName() { return "Trip"; }
 
     /**
      * Finds a list of trips with the specified trip state.

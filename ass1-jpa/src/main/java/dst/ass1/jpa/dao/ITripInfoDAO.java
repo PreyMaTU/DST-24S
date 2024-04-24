@@ -6,6 +6,7 @@ import dst.ass1.jpa.util.TupleResult;
 import java.util.List;
 
 public interface ITripInfoDAO extends GenericDAO<ITripInfo> {
+    default String getEntityName() { return "TripInfo"; }
 
     /**
      * Finds the average rating for each rider.

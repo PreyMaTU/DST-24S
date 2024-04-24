@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 public interface IRiderDAO extends GenericDAO<IRider> {
+    default String getEntityName() { return "Rider"; }
 
 
     /**
