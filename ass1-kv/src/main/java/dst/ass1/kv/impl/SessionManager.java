@@ -47,7 +47,8 @@ public class SessionManager implements ISessionManager {
         transaction.expire(sessionKey, timeToLive);
 
         // Run all commands in the transaction atomically or fail
-        if (transaction.exec() == null) {
+        final var result = transaction.exec();
+        if (result == null || !result.stream().allMatch( o -> o.equals("OK") || o.equals( 1L ) ) ) {
             throw new SessionCreationFailedException();
         }
 
