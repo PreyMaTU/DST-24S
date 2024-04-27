@@ -3,6 +3,7 @@ package dst.ass2.service.api.trip.rest;
 import dst.ass2.service.api.trip.*;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
@@ -14,7 +15,7 @@ public interface ITripServiceResource {
 
     @POST
     @Path("")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     Response createTrip(
             @FormParam("riderId") Long riderId,
             @FormParam("pickupId") Long pickupId,
@@ -27,7 +28,7 @@ public interface ITripServiceResource {
 
     @GET
     @Path("/{tripId}")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     Response getTrip(@PathParam("tripId") Long tripId) throws EntityNotFoundException;
 
     @DELETE
@@ -36,7 +37,7 @@ public interface ITripServiceResource {
 
     @POST
     @Path("/{tripId}/stops")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     Response addStop(
             @PathParam("tripId") Long tripId,
             @FormParam("locationId") Long locationId
@@ -51,7 +52,7 @@ public interface ITripServiceResource {
 
     @POST()
     @Path("/{tripId}/match")
-    @Consumes("application/json")
+    @Consumes(MediaType.APPLICATION_JSON)
     Response match(
             @PathParam("tripId") Long tripId,
             MatchDTO matchDTO
@@ -59,7 +60,7 @@ public interface ITripServiceResource {
 
     @POST
     @Path("/{tripId}/complete")
-    @Consumes("application/json")
+    @Consumes(MediaType.APPLICATION_JSON)
     Response complete(
             @PathParam("tripId") Long tripId,
             TripInfoDTO tripInfoDTO
