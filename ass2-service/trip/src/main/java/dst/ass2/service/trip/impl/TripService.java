@@ -84,7 +84,7 @@ public class TripService implements ITripService {
         final var trip= getById(trips, tripId);
 
         if( trip.getState() != TripState.CREATED ) {
-            throw new IllegalStateException();
+            throw new IllegalStateException( "Trip state is not CREATED" );
         }
 
         // Just check if the trip is valid. The fare value is unused
