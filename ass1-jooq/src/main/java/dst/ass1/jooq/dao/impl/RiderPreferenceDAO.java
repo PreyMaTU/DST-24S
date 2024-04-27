@@ -163,19 +163,21 @@ public class RiderPreferenceDAO implements IRiderPreferenceDAO {
             return;
         }
 
-        connection.batched(trx -> {
-            for( final var entry : model.getPreferences().entrySet() ) {
-                trx.dsl()
-                        .mergeInto( PREFERENCE )
-                        .using( trx.dsl().selectOne() )
-                        .on( PREFERENCE.RIDER_ID.eq(model.getRiderId())
-                                .and( PREFERENCE.PREF_KEY.eq(entry.getKey())) )
-                        .whenMatchedThenUpdate()
-                        .set( PREFERENCE.PREF_VALUE, entry.getValue() )
-                        .whenNotMatchedThenInsert( PREFERENCE.RIDER_ID, PREFERENCE.PREF_KEY, PREFERENCE.PREF_VALUE )
-                        .values( model.getRiderId(), entry.getKey(), entry.getValue() )
-                        .execute();
-            }
+        connection.transaction( trx -> {
+            trx.dsl().batched( brx -> {
+                for( final var entry : model.getPreferences().entrySet() ) {
+                    brx.dsl()
+                            .mergeInto( PREFERENCE )
+                            .using( brx.dsl().selectOne() )
+                            .on( PREFERENCE.RIDER_ID.eq(model.getRiderId())
+                                    .and( PREFERENCE.PREF_KEY.eq(entry.getKey())) )
+                            .whenMatchedThenUpdate()
+                            .set( PREFERENCE.PREF_VALUE, entry.getValue() )
+                            .whenNotMatchedThenInsert( PREFERENCE.RIDER_ID, PREFERENCE.PREF_KEY, PREFERENCE.PREF_VALUE )
+                            .values( model.getRiderId(), entry.getKey(), entry.getValue() )
+                            .execute();
+                }
+            });
         });
     }
 }
