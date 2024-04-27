@@ -1,3 +1,27 @@
 syntax = "proto3";
+package proto.auth.api.service.ass2.dst;
+option java_package= "dst.ass2.service.api.auth.proto";
+option java_multiple_files= true;
 
-// TODO implement authentication service
+message AuthenticationRequest {
+  string email= 1 ;
+  string password= 2;
+}
+
+message AuthenticationResponse {
+  bool isAuthenticated= 1;
+  string token= 2;
+}
+
+message TokenValidationRequest {
+  string token= 1;
+}
+
+message TokenValidationResponse {
+  bool isValid= 1;
+}
+
+service AuthService {
+  rpc authenticate(AuthenticationRequest) returns (AuthenticationResponse);
+  rpc validateToken(TokenValidationRequest) returns (TokenValidationResponse);
+}
