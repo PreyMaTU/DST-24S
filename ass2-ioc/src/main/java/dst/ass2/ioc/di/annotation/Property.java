@@ -8,7 +8,8 @@ import java.lang.annotation.Target;
 /**
  * A property injects the value of a {@link java.util.Properties} object into a field based on a key.
  */
-// TODO: add correct retention policy and target type
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Property {
 
     /**

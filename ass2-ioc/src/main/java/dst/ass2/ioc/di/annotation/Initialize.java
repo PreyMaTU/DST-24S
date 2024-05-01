@@ -9,7 +9,8 @@ import java.lang.annotation.Target;
  * Initialize marks a method to be invoked by the container after it has been constructed and all dependencies and
  * properties have been injected.
  */
-// TODO: add correct retention policy and target type
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Initialize {
 
 }

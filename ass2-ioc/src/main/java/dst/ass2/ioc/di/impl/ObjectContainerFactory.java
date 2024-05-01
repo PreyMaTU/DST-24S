@@ -9,8 +9,7 @@ public final class ObjectContainerFactory implements IObjectContainerFactory {
 
     @Override
     public IObjectContainer newObjectContainer(Properties properties) {
-        // TODO: implement
-        return null;
+        return new ObjectContainer( properties );
     }
 
 }
