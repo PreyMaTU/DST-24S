@@ -1,10 +1,11 @@
 package dst.ass2.aop;
 
+import dst.ass2.aop.impl.PluginExecutor;
+
 public class PluginExecutorFactory {
 
     public static IPluginExecutor createPluginExecutor() {
-        // TODO
-        return null;
+        return new PluginExecutor();
     }
 
 }
