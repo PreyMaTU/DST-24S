@@ -8,7 +8,8 @@ import java.lang.annotation.Target;
 /**
  * Marks a method to be executed by acquiring a named lock.
  */
-// TODO: add correct retention policy and target type
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Lock {
 
     /**
