@@ -12,6 +12,7 @@ import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.Date;
@@ -83,6 +84,9 @@ public class TripService implements ITripService {
         final var trips= daoFactory.createTripDAO();
         final var trip= getById(trips, tripId);
 
+        // Ensure exclusive access to trip entity
+        entityManager.lock( trip, LockModeType.PESSIMISTIC_WRITE );
+
         if( trip.getState() != TripState.CREATED ) {
             throw new IllegalStateException( "Trip state is not CREATED" );
         }
@@ -102,6 +106,9 @@ public class TripService implements ITripService {
         try {
             final var trips = daoFactory.createTripDAO();
             final var trip= getById(trips, tripId);
+
+            // Ensure exclusive access to trip entity
+            entityManager.lock( trip, LockModeType.PESSIMISTIC_WRITE );
 
             if( trip.getState() != TripState.QUEUED || trip.getRider() == null ) {
                 throw new IllegalStateException( "Trip state is not QUEUED" );
@@ -143,6 +150,9 @@ public class TripService implements ITripService {
     public void complete(Long tripId, TripInfoDTO tripInfoDTO) throws EntityNotFoundException {
         final var trips = daoFactory.createTripDAO();
         final var trip= getById(trips, tripId);
+
+        // Ensure exclusive access to trip entity
+        entityManager.lock( trip, LockModeType.PESSIMISTIC_WRITE );
 
         trip.setState(TripState.COMPLETED);
 
@@ -188,6 +198,9 @@ public class TripService implements ITripService {
         final var trips= daoFactory.createTripDAO();
         final var tripModel= getById(trips, trip.getId() );
 
+        // Ensure exclusive access to trip entity
+        entityManager.lock( tripModel, LockModeType.PESSIMISTIC_WRITE );
+
         if(tripModel.getState() != TripState.CREATED){
             throw new IllegalStateException( "Trip state is not CREATED" );
         }
@@ -219,12 +232,16 @@ public class TripService implements ITripService {
         final var trips= daoFactory.createTripDAO();
         final var tripModel= getById(trips, trip.getId() );
 
+        // Ensure exclusive access to trip entity
+        entityManager.lock( tripModel, LockModeType.PESSIMISTIC_WRITE );
+
         if(tripModel.getState() != TripState.CREATED){
             throw new IllegalStateException( "Trip state is not CREATED" );
         }
 
+        // Just check that the location exists
         final var locations= daoFactory.createLocationDAO();
-        final var location= getById( locations, locationId );
+        getById( locations, locationId );
 
         // Filter out the location id from the original stops
         final var originalStops= tripModel.getStops();
