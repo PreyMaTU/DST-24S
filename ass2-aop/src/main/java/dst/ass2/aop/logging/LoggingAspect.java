@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 import java.lang.reflect.InaccessibleObjectException;
 import java.util.logging.Logger;
@@ -11,13 +12,16 @@ import java.util.logging.Logger;
 @Aspect
 public class LoggingAspect {
 
-    @Before("execution(void dst.ass2.aop.IPluginExecutable.execute()) && !@annotation(dst.ass2.aop.logging.Invisible)")
-    public void beforeExecute(JoinPoint joinPoint) {
+    @Pointcut("execution(void dst.ass2.aop.IPluginExecutable.execute()) && !@annotation(dst.ass2.aop.logging.Invisible)")
+    public void visibleExecutionMethodPointcut() {}
+
+    @Before("LoggingAspect.visibleExecutionMethodPointcut()")
+    public void logBeforeVisibleExecutionMethod(JoinPoint joinPoint) {
         log(joinPoint, "started to execute");
     }
 
-    @After("execution(void dst.ass2.aop.IPluginExecutable.execute()) && !@annotation(dst.ass2.aop.logging.Invisible)")
-    public void logAfterExecution(JoinPoint joinPoint) {
+    @After("LoggingAspect.visibleExecutionMethodPointcut()")
+    public void logAfterVisibleExecutionMethod(JoinPoint joinPoint) {
         log(joinPoint, "is finished");
     }
 
