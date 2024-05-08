@@ -402,6 +402,47 @@
         <version>${httpclient.version}</version>
       </dependency>
 
+      <!-- assignment 3 -->
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-streaming-java_2.12</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-cep_2.12</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-clients_2.12</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.github.docker-java</groupId>
+        <artifactId>docker-java</artifactId>
+        <version>${docker-api-client.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.rabbitmq</groupId>
+        <artifactId>amqp-client</artifactId>
+        <version>${rabbitmq-client.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.rabbitmq</groupId>
+        <artifactId>http-client</artifactId>
+        <version>${rabbitmq-http.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-amqp</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -421,6 +462,10 @@
         <module>ass2-service/facade</module>
         <module>ass2-aop</module>
         <module>ass2-ioc</module>
+        <module>ass3-messaging</module>
+        <module>ass3-event</module>
+        <module>ass3-elastic</module>
+        <module>ass3-worker</module>
       </modules>
     </profile>
 
@@ -511,6 +556,32 @@
       </modules>
     </profile>
 
+    <profile>
+      <id>ass3-event</id>
+      <modules>
+        <module>ass3-event</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>ass3-messaging</id>
+      <modules>
+        <module>ass3-messaging</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>ass3-elastic</id>
+      <modules>
+        <module>ass3-messaging</module>
+        <module>ass3-elastic</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>ass3-worker</id>
+      <modules>
+        <module>ass3-messaging</module>
+        <module>ass3-worker</module>
+      </modules>
+    </profile>
 
 
   </profiles>
@@ -554,6 +625,12 @@
     <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
     <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
     <httpclient.version>4.5.14</httpclient.version>
+    <!-- assignment 3 -->
+    <flink.version>1.14.6</flink.version>
+    <docker-api-client.version>3.3.0</docker-api-client.version>
+    <commons-cli.version>1.4</commons-cli.version>
+    <rabbitmq-http.version>5.0.0</rabbitmq-http.version>
+    <rabbitmq-client.version>5.16.0</rabbitmq-client.version>
   </properties>
 
 
