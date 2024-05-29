@@ -1,0 +1,18 @@
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type  ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - %highlight(%5p) [%12.12thread] %cyan(%-40.40logger{39}): %m%n
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <logger name="org.apache.flink"
+            level="WARN"/> <!-- change this to INFO if you want to see more flink logging data-->
+
+    <root level="${log.level:-INFO}">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
