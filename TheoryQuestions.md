@@ -23,7 +23,7 @@ _In the previous tasks you already gained some experiences using annotations and
 - When to Use:
   - __Rapid Development:__ Small/medium-sized projects, simplicity & rapid development
   - __Simple Schemas:__ Schema is straightforward
-  
+
 #### JPA XML
 
 - Benefits:
@@ -57,12 +57,12 @@ _What is the lifecycle of a JPA entity, i.e., what are the different states an e
   - `merge()` Updates the db from a provided entity and returns a new managed one: transient -> managed* (*original entity is still untracked)
   - `detach()` Un-tracks a managed entity: managed -> detached
   - `remove()` Marks an entity to be removed: managed -> removed (ignores transient, throws on detached entities)
-  
+
 #### Database Syncing
   - When calling `flush` manually
   - `FlushModeType.AUTO`: Automatic detection when entities are written to, als during transaction
   - `FlushModeType.COMMIT`: Only when transaction is committed
- 
+
 
 ### (1.6.3.) Optimistic vs. Pessimistic Locking
 _The database systems you have used in this assignment provide different types of concurrency control mechanisms. Redis, for example, provides the concept of optimistic locks. The JPA EntityManager allows one to set a pessimistic read/write lock on individual objects. What are the main differences between these locking mechanisms? In what situations or use cases would you employ them? Think of problems that can arise when using the wrong locking mechanism for these use cases._
@@ -73,7 +73,7 @@ _The database systems you have used in this assignment provide different types o
   - Before committing changes, check if the record has been modified by another transaction since reading
   - Eg. comparing version number or timestamp
   - Do the update if no conflicts are found, otherwise abort and retry
-  
+
 - __Use Cases:__ Infrequent conflicts, low cost of conflict resolution, for environments with low contention for resources & short transactions
 
 - __Potential Problems:__ Many aborts and retries when record is used in parallel. Lost updates, if transaction is not retried
@@ -160,7 +160,7 @@ _Compare gRPC remoting and Web services. When would you use one technology, and 
 
 Both have their usecases. Web services are simpler, and more widely spread. gRPC is more efficient and allows implementing stronger contracts and more complex features like streaming.
 
-#### Other 
+#### Other
 - Java RMI: Only compatible with Java
 - Socket programming: Very low level, maximum flexibility, high degree of wheel-re-invention
 
@@ -174,7 +174,7 @@ Class loading
 - Locates the class, parses & verifies binary class format, links class together, initializes class fields
 
 There are three types of class loaders
-1. __Bootstrap Class Laoder:__ For core JRE libraries during startup located in `jre/lib`
+1. __Bootstrap Class Loader:__ For core JRE libraries during startup located in `jre/lib`
 2. __Extension Class Loader:__ For third-party JRE extension libraries
 3. __System Class Loader:__ For user classes on the current class path
 
@@ -212,4 +212,3 @@ Weaving integrates the code from the aspect files into the target classes and me
   - (+) Dynamically create/remove aspects
   - (-) Bad performance
   - (-) Not supported by AspectJ
-
