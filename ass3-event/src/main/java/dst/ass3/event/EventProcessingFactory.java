@@ -1,5 +1,6 @@
 package dst.ass3.event;
 
+import dst.ass3.event.impl.EventProcessingEnvironment;
 import dst.ass3.event.impl.EventSourceFunction;
 
 /**
@@ -7,8 +8,7 @@ import dst.ass3.event.impl.EventSourceFunction;
  */
 public class EventProcessingFactory {
     public static IEventProcessingEnvironment createEventProcessingEnvironment() {
-        // TODO
-        return null;
+        return new EventProcessingEnvironment();
     }
 
     public static IEventSourceFunction createEventSourceFunction() {
