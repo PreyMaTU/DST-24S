@@ -158,7 +158,7 @@ def open_rmq_channel(queue_name: str):
         pika.PlainCredentials(RMQ_USER, RMQ_PWD)
     ))
     channel = connection.channel()
-    channel.queue_declare(queue_name, durable=False)
+    channel.queue_declare(queue_name, durable=True)
 
     return channel
 
