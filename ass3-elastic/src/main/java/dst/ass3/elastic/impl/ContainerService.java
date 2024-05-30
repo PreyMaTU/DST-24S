@@ -44,11 +44,7 @@ public class ContainerService implements IContainerService {
         info.setRunning(true);
 
         if( container.getImage().equals(WORKER_IMAGE) ) {
-            System.out.println(container.getCommand());
-
             final var arguments= container.getCommand().split("\\s+");
-            System.out.println(Arrays.toString(arguments));
-
             final var region= Region.valueOf(arguments[2].toUpperCase());
             info.setWorkerRegion( region );
         }
