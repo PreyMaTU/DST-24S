@@ -212,3 +212,101 @@ Weaving integrates the code from the aspect files into the target classes and me
   - (+) Dynamically create/remove aspects
   - (-) Bad performance
   - (-) Not supported by AspectJ
+
+## Task 3 - Theory Questions
+
+### (3.4.1.) Message-Oriented Middleware Comparison
+_Message-Oriented Middleware (MOM), such as RabbitMQ, is an important technology to facilitate messaging in distributed systems. There are many different types and implementations of MOM. For example, the [Java Message Service (JMS)](https://en.wikipedia.org/wiki/Jakarta_Messaging) is part of the Java EE specification. Compare JMS to the [Advanced Message Queuing Protocol (AMQP)](https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol) used by RabbitMQ. How are JMS and AMQP comparable? What are the differences? When is it useful to use JMS?_
+
+#### Similarities
+- __Asynchronous Messaging:__ Decoupling the producer and consumer for system scalability and fault tolerance
+- __Messaging Patterns:__ Allow for point-to-point (queues) and publish-subscribe (topics)
+- __Reliability and Durability:__ Mechanisms to ensure reliable message delivery: message persistence, acknowledgments, and transactions
+- __Message Filtering:__ JMS selectors vs AMQP header exchanges
+
+#### Differences
+- __Implementation:__
+  - JMS is an API specification, only concerned with the interface and behavior, does not dictate how messages are transmitted
+  - AMQP is a binary application layer protocol, specifies wire protocol and broker behavior
+
+- __Language and Platform Dependency:__ JMS is focused on Java EE, AMQP is more diverse
+
+- __Brokers:__ many different JMS compliant brokers with different features, a few more consistent AMQP brokers
+
+#### Selecting JMS
+- When the system is heavily Java EE focused, eg. allows for integration with Transaction API
+- Integrating with existing Java applications
+- No interoperability needed
+
+
+### (3.4.2.) Messaging Patterns
+_Describe the different messaging patterns that can be implemented with RabbitMQ. Also, describe for each pattern: (a) a use cases where you would use the pattern (and why) (b) an alternative technology that also allows you to implement this pattern._
+
+#### Work queue
+- Synchronized task queue for producers and consumers
+- Useful for queueing tasks to be handled by services
+- Only one consumer receives the message when polling
+
+Can be implemented using eg. JMS or Amazon SQS-service.
+
+#### Publish subscribe
+- Broadcasts a message to every subscriber in `fanout` mode
+- Useful when distributing information to all participants
+- Useful for event streams that get processed differently by different services eg. chat messages
+
+Can be implemented using eg. JMS, Apache Kafka, MQTT.
+
+#### Routing
+- Similar to publish/subscribe broadcasting
+- Subscribers can select which kind of messages they want to receive in `direct` mode
+- Useful when participants are only interested in certain message types eg. sending notifications when error messages get logged
+
+Can be implemented using eg. JMS, (with some additional work) MQTT, Google Pub/Sub.
+
+#### Topic
+- Similar to routing, but subscribers can select whole groups of message types
+- Select via patterns like `message.type.*` on structured names
+- Useful for receiving whole groups of message types eg. `us.*`, `us.ny.*`, `us.ny.empire-state.*`
+
+Very specific, and hard to replicate with other technologies exactly. Comparable could be Amazon SNS (simple notification system).
+
+#### Header
+- Messages get routed by multiple attributes in the header
+- Allows filtering by eg. timestamp, ids, ...
+- Useful for complex custom routing
+
+Specific to the AMQP message format. Comparable to service bus implementations.
+
+
+### (3.4.3.) Container vs. Virtual Machines
+_Explain the differences between container-based virtualization (in particular Docker) and Virtual Machines. What are the benefits of container over VMs and vice versa?_
+
+#### Virtual Machine
+- Hypervisor isolates full OS instances from each other
+- On top of HW directly (type 1) or on top of another OS (type 2)
+- Higher overhead, and slower startup
+- Harder to scale
+- Better isolation
+- Allows to emulate legacy systems
+
+#### Containers
+- Kernel/OS-level virtualization; Containers share the Kernel
+- Processes are isolated into namespaces with separate networks, filesystem, ...
+- Less overhead during runtime (eg memory and storage) and faster startup
+- Easier to scale
+- Docker only compatible with the Linux Kernel (on Windows, Docker runs in a Linux VM)
+- Fully prepared images via docker hub available
+
+
+### (3.4.4.) Scalability of Stateful Stream Processing Operators
+_A key mechanism to horizontally scale stream processing topologies is auto-parallelization, i.e., identifying regions in the data flow that can be executed in parallel, potentially on different machines. How do key-based aggregations, windows or other stateful operators affect the ability for parallelization? What challenges arise when scaling out such operators?_
+
+- Stateful operators hard to parallelize
+- Need for data sharing (the state) requires synchronization -> Locking overhead
+  - Key aggregation needs to know already seen keys and their groups
+  - Window function needs to know currently computed value
+  - Other operators might also rely on the ordering of events
+- Distributing the state incurs overhead and complexity
+  - Try to partition state to reduce communication/locking -> process groups of related events on the same node
+- Key aggregation can suffer from skewed data, where certain keys are more common -> Unequal load on nodes
+- Ordering complicated when different nodes handle messages of the same group with separate queues
