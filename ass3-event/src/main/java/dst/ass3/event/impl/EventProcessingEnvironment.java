@@ -107,6 +107,8 @@ public class EventProcessingEnvironment implements IEventProcessingEnvironment {
                 });
 
         averageMatchingDurationStream.addSink( averageMatchingDurationSink );
+
+        System.out.println(env.getExecutionPlan());
     }
 
     @Override
