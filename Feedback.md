@@ -15,3 +15,7 @@ point deductions were made:
 - 2.3.3_03: -0,5 Plugin callbacks should be executed in separate threads (Either use a new Timer instance for each aspect or utilize threads to ensure that the plugin callbacks are executed in separate threads.)
 
 I do not agree with the last point.
+
+## Assignment 3
+
+The feedback from assignment 1 was incorporated into the codebase.
